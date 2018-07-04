@@ -6,13 +6,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Component
 public class CountryRepository {
 
-    @Autowired
     private static final List<Country> ALL_COUNTRIES = Arrays.asList(
             new Country("Latvia", 1953200, "Riga",
                     new ArrayList<String>() {{

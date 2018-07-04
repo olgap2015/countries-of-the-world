@@ -16,5 +16,5 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-
+    compile 'com.github.slugify:slugify:2.1.4'
 }

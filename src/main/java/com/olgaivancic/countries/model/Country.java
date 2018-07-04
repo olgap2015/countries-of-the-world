@@ -5,6 +5,7 @@ import java.util.List;
 public class Country {
 
     private String name;
+    private String slug;
     private int population;
     private String capitalCity;
     List<String> languages;
