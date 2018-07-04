@@ -14,6 +14,11 @@
     </div>
 </header>
 <div class="container">
+    <p>Sort by:&nbsp;
+        <a th:href="@{/countries/by-name}">Country Name</a>
+        &nbsp;
+        <a th:href="@{/countries/by-population}">Population</a>
+    </p>
     <div th:each="country : ${countries}" class="country">
         <a th:href="@{'/country/' + ${country.slug}}">
             <img th:src="@{'images/' + ${country.slug} + '-flag.png'}" th:alt="'Flag of ' + ${country.name}"/>
