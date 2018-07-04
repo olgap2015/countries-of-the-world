@@ -1,7 +1,6 @@
 package com.olgaivancic.countries.data;
 
 import com.olgaivancic.countries.model.Country;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -39,9 +38,9 @@ public class CountryRepository {
         return ALL_COUNTRIES;
     }
 
-    public Country findByName (String name) {
+    public Country findBySlug (String slug) {
         return ALL_COUNTRIES.stream()
-                .filter(country -> country.getName().equals(name))
+                .filter(country -> country.getSlug().equals(slug))
                 .findFirst()
                 .orElseThrow(com.olgaivancic.countries.data.NotFoundException::new);
     }

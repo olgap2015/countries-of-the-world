@@ -1,5 +1,8 @@
 package com.olgaivancic.countries.model;
 
+import com.github.slugify.Slugify;
+
+import java.io.IOException;
 import java.util.List;
 
 public class Country {
@@ -12,6 +15,12 @@ public class Country {
 
     public Country(String name, int population, String capitalCity, List<String> languages) {
         this.name = name;
+        try {
+            Slugify slugify = new Slugify();
+            slug = slugify.slugify(name);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.population = population;
         this.capitalCity = capitalCity;
         this.languages = languages;
@@ -47,5 +56,9 @@ public class Country {
 
     public void setLanguages(List<String> languages) {
         this.languages = languages;
+    }
+
+    public String getSlug() {
+        return slug;
     }
 }

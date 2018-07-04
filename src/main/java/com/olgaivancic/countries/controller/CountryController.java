@@ -23,9 +23,9 @@ public class CountryController {
         return "index";
     }
 
-    @RequestMapping(value = "/country/{name}")
-    public String countryDetails (@PathVariable String name, ModelMap modelMap) {
-        Country country = countryRepository.findByName(name);
+    @RequestMapping(value = "/country/{slug}")
+    public String countryDetails (@PathVariable String slug, ModelMap modelMap) {
+        Country country = countryRepository.findBySlug(slug);
         modelMap.put("country", country);
         return "country-detail";
     }
