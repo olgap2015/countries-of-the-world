@@ -2,12 +2,14 @@ package com.olgaivancic.countries.controller;
 
 import com.olgaivancic.countries.data.CountryRepository;
 import com.olgaivancic.countries.model.Country;
+import com.olgaivancic.countries.model.CountryComparatorByPopulation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,21 +35,19 @@ public class CountryController {
 
     @RequestMapping(value = "/countries/by-name")
     public String listCountriesSortedByName(ModelMap modelMap) {
-        List<Country> countries = countryRepository.findAllCountries();
+        List<Country> countries = new ArrayList<>(countryRepository.findAllCountries());
         countries.sort((c1, c2) -> c1.getName().compareTo(c2.getName()));
-//        Collections.reverse(countries);
         modelMap.put("countries", countries);
         return "sort-by-country-name";
     }
 
-//    courseList.sort((c1, c2) -> Integer.valueOf(c1.courseID).compareTo(c2.courseID));
 
-    @RequestMapping
+    @RequestMapping(value = "/countries/by-population")
     public String listCountriesSortedByPopulation(ModelMap modelMap) {
-        List<Country> countries = countryRepository.findAllCountries();
+        List<Country> countries = new ArrayList<>(countryRepository.findAllCountries());
         // TODO:oi - figure out this method. Maybe need to implement using Comparable interface for Country class
-        countries.sort((c1, c2) -> Integer.valueOf(c1.getPopulation().compareTo(c2.getPopulation()));
-//        Collections.reverse(countries);
+        Collections.sort(countries, new CountryComparatorByPopulation());
+        Collections.reverse(countries);
         modelMap.put("countries", countries);
         return "sort-by-country-name";
     }

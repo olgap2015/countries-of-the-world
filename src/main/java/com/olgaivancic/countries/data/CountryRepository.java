@@ -15,7 +15,7 @@ public class CountryRepository {
                     new ArrayList<String>() {{
                         add("Latvian");
             }}),
-            new Country("Moldova", 2998235, "Chishinau",
+            new Country("Moldova", 2998235, "Chişhinâu",
                     new ArrayList<String>() {{
                         add("Romanian");
             }}),
